@@ -31,7 +31,8 @@
       <h3 [ngClass]="{subtitle1: num%2==1, subtitle2: num%2==0}"
        (click)="plusOne($event)">{{subtitle}} +{{num}}</h3>
     </hgroup>
-    <div id="social-icons" class="pull-right social-icon">
+    <div id="social-icons" class="pull-right social-icon"
+      *ngIf="num%2==1">
       <a href="https://www.facebook.com/will.fans" title="Will 保哥的技術交流中心" target="_blank">
         <img src="/assets/images/facebook.png">
       </a>
