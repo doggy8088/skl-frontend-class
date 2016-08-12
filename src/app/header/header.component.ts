@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  plusOne($event) {
+  plusOne($event: MouseEvent) {
     this.num++;
     console.log($event);
   }
