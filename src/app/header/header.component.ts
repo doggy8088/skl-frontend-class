@@ -10,11 +10,17 @@ export class HeaderComponent implements OnInit {
   title = 'The Will Will Web !';
   title_url = 'http://blog.miniasp.com';
 
-  subtitle = '記載著 <strong>Will</strong> 在網路世界的學習心得與技術分享';
+  subtitle = '記載著 Will 在網路世界的學習心得與技術分享';
+
+  num = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  plusOne($event) {
+    this.num++;
+    console.log($event);
+  }
 }
