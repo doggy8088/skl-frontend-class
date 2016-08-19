@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
 import { SearchComponent } from './search/search.component';
+import { ToChineseNumberPipe } from './tochinesenumber.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent, ArticleComponent, SearchComponent
+    HeaderComponent, ArticleComponent, SearchComponent, ToChineseNumberPipe
   ],
   imports: [
     BrowserModule,

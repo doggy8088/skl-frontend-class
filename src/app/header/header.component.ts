@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   plusOne($event: MouseEvent) {
-    this.num=this.num*1.1;
+    this.num=this.num+1;
     console.log($event);
   }
 
