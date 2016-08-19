@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { SearchComponent } from './search/search.component';
 import { ToChineseNumberPipe } from './tochinesenumber.pipe';
 import { DataService } from './data.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DataService } from './data.service';
   imports: [
     BrowserModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [DataService],
   entryComponents: [AppComponent],
