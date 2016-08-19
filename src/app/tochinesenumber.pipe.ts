@@ -44,10 +44,10 @@ function intToChineseNumberString(useLowerType) {
                 //目前位數
                 var currentDigit = numString.length - index;
                 //目前的數字
-                var currentNumber = numString[index] - '0';
+                var currentNumber = +numString[index];
                 //上一個位數為非0
                 //剛開始為false(沒有上一個位數)，之後會偵測上一個位數(之前的小位數)是否為非0
-                isLastNumberNonZero = ((index + 1) == numString.length) ? false : (numString[index + 1] - '0' > 0);
+                isLastNumberNonZero = ((index + 1) == numString.length) ? false : (+numString[index + 1] > 0);
                 //剛開始遇到零不處理，除非有之後遇到1-9
                 if (isLastNumberNonZero || currentNumber > 0)
                     result = numTarget[currentNumber]//數字
