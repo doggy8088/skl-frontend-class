@@ -12,10 +12,6 @@ export class AppComponent {
 
   keyword = '';
 
-  doSearch(keyword) {
-    this.keyword = keyword;
-  }
-
   deleteArticle(i) {
     this.data.splice(i, 1);
   }

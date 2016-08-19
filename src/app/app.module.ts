@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent, ArticleComponent
+    HeaderComponent, ArticleComponent, SearchComponent
   ],
   imports: [
     BrowserModule,
