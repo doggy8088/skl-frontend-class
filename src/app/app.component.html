@@ -9,10 +9,11 @@
     <section class="col-md-8 content-wrapper">
       <div id="ctl00_cphBody_divError"></div>
       <div id="ctl00_cphBody_PostList1_posts" class="posts">
-        
+
         <app-article *ngFor="let item of data; let i = index;"
           [item]="item"
           [i]="i"
+          (delete)="deleteArticle($event)"
           ></app-article>
 
       </div>
