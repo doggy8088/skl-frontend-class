@@ -25,7 +25,7 @@
     <aside class="col-md-4 sidebar-wrapper">
       <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
 
-        <app-search (search)="keyword=$event"></app-search>
+        <app-search (search)="doSearch($event)"></app-search>
 
         <div [ngSwitch]="keyword">
           <div *ngSwitchWhen="'1'">

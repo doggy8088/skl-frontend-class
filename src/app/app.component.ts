@@ -10,13 +10,26 @@ export class AppComponent {
   title = 'The Will Will Web';
   title_url = 'http://blog.miniasp.com';
 
+
+	constructor() {
+    this.data = this.default_data;
+	}
+
   keyword = '';
 
   deleteArticle(i) {
     this.data.splice(i, 1);
   }
 
-  data = [
+  doSearch(keyword:string) {
+    this.keyword=keyword;
+    this.data = this.default_data.filter(value => {
+      return value.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1
+    });
+  }
+
+  data:any;
+  default_data: any[] = [
               {
                 "href": "http://blog.miniasp.com/post/2016/04/30/Visual-Studio-Code-from-Command-Prompt-notes.aspx",
                 "title": "從命令提示字元中開啟 Visual Studio Code 如何避免顯示惱人的偵錯訊息",
