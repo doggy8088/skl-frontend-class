@@ -10,12 +10,8 @@
       <div id="ctl00_cphBody_divError"></div>
       <div id="ctl00_cphBody_PostList1_posts" class="posts">
 
-        <app-article *ngFor="let item of data; let i = index;"
-          [item]="item"
-          [i]="i"
-          [keyword]="keyword"
-          (delete)="deleteArticle($event)"
-          ></app-article>
+        <app-article *ngFor="let item of datasvc.data; let i = index;"
+          [item]="item" [i]="i"></app-article>
 
       </div>
     </section>
@@ -25,9 +21,9 @@
     <aside class="col-md-4 sidebar-wrapper">
       <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
 
-        <app-search (search)="doSearch($event)"></app-search>
+        <app-search></app-search>
 
-        <div [ngSwitch]="keyword">
+        <div [ngSwitch]="datasvc.keyword">
           <div *ngSwitchWhen="'1'">
 
         <!-- Calendar START -->

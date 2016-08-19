@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
 import { SearchComponent } from './search/search.component';
 import { ToChineseNumberPipe } from './tochinesenumber.pipe';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ToChineseNumberPipe } from './tochinesenumber.pipe';
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })

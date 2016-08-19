@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-search',
@@ -7,19 +8,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  keyword: string;
+  constructor(private datasvc: DataService) { }
 
-  @Output()
-  search = new EventEmitter<string>();
-
-  constructor() { }
+  // private datasvc: DataService;
+  // constructor(datasvc: DataService) {
+  //   this.datasvc = datasvc;
+  // }
 
   ngOnInit() {
-  }
-
-  doSearch(keyword) {
-    this.keyword = keyword;
-    this.search.emit(keyword);
   }
 
 }
