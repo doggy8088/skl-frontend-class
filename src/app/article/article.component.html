@@ -30,6 +30,11 @@
       Touched: {{summary.touched}} v.s. {{summary.untouched}}<br>
       Errors: {{summary.errors|json}}
     </div>
+    <div>
+      Valid: {{form1.form.valid}} v.s. {{form1.form.invalid}} <br>
+      Pristine: {{form1.form.pristine}} v.s. {{form1.form.dirty}}<br>
+      Touched: {{form1.form.touched}} v.s. {{form1.form.untouched}}
+    </div>
     <input type="submit" [disabled]="form1.form.invalid" value="儲存">
   </section>
 
