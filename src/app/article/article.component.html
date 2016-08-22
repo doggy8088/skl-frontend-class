@@ -13,8 +13,16 @@
   </header>
 
   <section *ngIf="IsEdit" class="post-body text">
-    <textarea cols="80" rows="10" [(ngModel)]="item.summary"></textarea>
-    <button (click)="doSave()">儲存</button>
+    <textarea cols="80" rows="10" [(ngModel)]="item.summary" required
+      #summary="ngModel"></textarea>
+    <div class="alert alert-danger" [hidden]="summary.valid || summary.pristine">請務必填寫內容</div>
+    <div>
+      Valid: {{summary.valid}} v.s. {{summary.invalid}} <br>
+      Pristine: {{summary.pristine}} v.s. {{summary.dirty}}<br>
+      Touched: {{summary.touched}} v.s. {{summary.untouched}}<br>
+      Errors: {{summary.errors|json}}
+    </div>
+    <button (click)="doSave()" [disabled]="summary.invalid">儲存</button>
   </section>
 
   <section *ngIf="!IsEdit" class="post-body text" (dblclick)="IsEdit=true"

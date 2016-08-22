@@ -10,6 +10,8 @@ import { ToChineseNumberPipe } from './tochinesenumber.pipe';
 import { DataService } from './data.service';
 import { HttpModule } from '@angular/http';
 
+import * as firebase from 'firebase';
+
 @NgModule({
   declarations: [
     AppComponent,
