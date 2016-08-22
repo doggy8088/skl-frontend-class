@@ -8,16 +8,43 @@ export class DataService {
 
 	constructor(private http: Http)
   {
-    http.get('https://echo.getpostman.com/get?test=123').subscribe(value => console.log(value));
+    let articleRefs = firebase.database().ref('/articles');
 
-    http.get('/api/articles.json')
-        .subscribe(value => {
-          this.data = value.json();
-        });
+    articleRefs.on('value', (snapshot) => {
+      let items = snapshot.val();
+      console.log(items);
+
+      if(items == null) {
+        http.get('/api/articles.json')
+            .subscribe(value => {
+              this.data = value.json();
+              for(let item of this.data) {
+                articleRefs.push(item);
+              }
+            });
+      } else {
+        this.data = [];
+        for (let i in items) {
+          // console.log(items[i]);
+          items[i].key = i;
+          this.data.push(items[i]);
+        }
+      }
+    });
+
 	}
 
   deleteArticle(i) {
-    this.data.splice(i, 1);
+    var id = this.data[i].key;
+    // this.data.splice(i, 1);
+    let itemRefs = firebase.database().ref('/articles/' + id);
+    itemRefs.remove();
+  }
+
+  saveArticle(item) {
+    let itemRefs = firebase.database().ref('/articles/' + item.key);
+    itemRefs.set(item);
+    // itemRefs.update({summary: item.summary});
   }
 
   doSearch(keyword:string) {

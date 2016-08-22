@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'The Will Will Web';
   title_url = 'http://blog.miniasp.com';
 
-  constructor(private datasvc: DataService) { }
+  constructor(private datasvc: DataService) {
+
+  }
 
 }

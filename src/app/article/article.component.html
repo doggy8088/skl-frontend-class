@@ -11,9 +11,17 @@
       <span class="post-date">{{datasvc.keyword}}</span>
     </div>
   </header>
-  <section class="post-body text" [innerHTML]="item.summary">
+
+  <section *ngIf="IsEdit" class="post-body text">
+    <textarea cols="80" rows="10" [(ngModel)]="item.summary"></textarea>
+    <button (click)="doSave()">儲存</button>
   </section>
+
+  <section *ngIf="!IsEdit" class="post-body text" (dblclick)="IsEdit=true"
+    [innerHTML]="item.summary">
+  </section>
+
   <a href="#" (click)="datasvc.deleteArticle(i)">Delete</a>
-  <pre>{{item|json}}</pre>
+  <!--<pre>{{item|json}}</pre>-->
 </article>
 <!-- Article END-->

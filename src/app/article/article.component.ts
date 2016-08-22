@@ -11,13 +11,20 @@ export class ArticleComponent implements OnInit, OnChanges {
   @Input() i:any;
   @Input() item: any;
 
+  IsEdit = false;
+  
   constructor(private datasvc: DataService) { }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
-    console.log('something changed');
+    // console.log('something changed');
+  }
+
+  doSave() {
+    this.datasvc.saveArticle(this.item);
+    this.IsEdit=false;
   }
 
 }
