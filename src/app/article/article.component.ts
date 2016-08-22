@@ -12,7 +12,7 @@ export class ArticleComponent implements OnInit, OnChanges {
   @Input() item: any;
 
   IsEdit = false;
-  
+
   constructor(private datasvc: DataService) { }
 
   ngOnInit() {

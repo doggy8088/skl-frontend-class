@@ -1,7 +1,15 @@
+<form name="form1" #form1="ngForm" (ngSubmit)="doSave()">
+
 <!-- Article START-->
 <article class="post" id="post{{i}}">
+
   <header class="post-header">
-    <h2 class="post-title">
+    <h2 *ngIf="IsEdit" class="post-title">
+        <input type="text" name="title" style="width: 100%" [(ngModel)]="item.title" required #title="ngModel">
+        <div class="alert alert-danger" [hidden]="title.valid || title.pristine">
+          請填寫文章標題</div>
+    </h2>
+    <h2 *ngIf="!IsEdit" class="post-title">
         <a href="{{item.href}}">{{item.title}}</a>
     </h2>
     <div class="post-info clearfix">
@@ -13,7 +21,7 @@
   </header>
 
   <section *ngIf="IsEdit" class="post-body text">
-    <textarea cols="80" rows="10" [(ngModel)]="item.summary" required
+    <textarea cols="70" rows="10" name="summary" [(ngModel)]="item.summary" required
       #summary="ngModel"></textarea>
     <div class="alert alert-danger" [hidden]="summary.valid || summary.pristine">請務必填寫內容</div>
     <div>
@@ -22,7 +30,7 @@
       Touched: {{summary.touched}} v.s. {{summary.untouched}}<br>
       Errors: {{summary.errors|json}}
     </div>
-    <button (click)="doSave()" [disabled]="summary.invalid">儲存</button>
+    <input type="submit" [disabled]="form1.form.invalid" value="儲存">
   </section>
 
   <section *ngIf="!IsEdit" class="post-body text" (dblclick)="IsEdit=true"
@@ -30,6 +38,9 @@
   </section>
 
   <a href="#" (click)="datasvc.deleteArticle(i)">Delete</a>
+
   <!--<pre>{{item|json}}</pre>-->
 </article>
 <!-- Article END-->
+
+</form>

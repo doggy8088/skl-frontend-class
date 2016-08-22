@@ -43,8 +43,11 @@ export class DataService {
 
   saveArticle(item) {
     let itemRefs = firebase.database().ref('/articles/' + item.key);
-    itemRefs.set(item);
-    // itemRefs.update({summary: item.summary});
+    // itemRefs.set(item);
+    itemRefs.update({
+      title: item.title,
+      summary: item.summary
+    });
   }
 
   doSearch(keyword:string) {
