@@ -14,7 +14,13 @@ export class HeaderComponent implements OnInit {
 
   num = 10;
 
-  constructor() { }
+  isEdit = false;
+
+  constructor() {
+    firebase.database().ref('/subtitle').on('value', (value) => {
+      this.subtitle = value.val();
+    })
+  }
 
   ngOnInit() {
   }
@@ -22,6 +28,16 @@ export class HeaderComponent implements OnInit {
   plusOne($event: MouseEvent) {
     this.num=this.num+1;
     console.log($event);
+  }
+
+  saveSubtitle($event: KeyboardEvent) {
+    var h3 = $event.target as HTMLHeadingElement;
+    firebase.database().ref('/subtitle').set(h3.innerText).then(a => {
+      this.isEdit = false;
+    }).catch(error => {
+      alert('Error occurred.');
+      this.isEdit = false;
+    });
   }
 
 }
